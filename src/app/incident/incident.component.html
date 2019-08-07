@@ -1,11 +1,4 @@
-<h2>{{incident.name | uppercase}} Details</h2>
-<div><span>id: </span>{{incident.id}}</div>
-
-<div>
-  <label>name:
-    <input [(ngModel)]="incident.name" placeholder="name"/>
-  </label>
-</div>
+<h2>Incident Details</h2>
 
 <form [formGroup]="incidentForm" (ngSubmit)="onSubmit()">
   
@@ -25,7 +18,7 @@
   </label>
 
   <div formGroupName="values">
-    <h3>Values</h3>
+    <h4>Values</h4>
     <label>
       Value1:
       <input type="text" formControlName="value1">
@@ -46,7 +39,15 @@
   </label>
 
   <button type="submit" [disabled]="!incidentForm.valid">Submit</button>
-  <p>
-    Form Status: {{ incidentForm.status }}
-  </p>
+
 </form>
+
+<hr>
+
+<p>
+  Form Value: {{ incidentForm.value | json }}
+</p>
+
+<p>
+  Form Status: {{ incidentForm.status }}
+</p>

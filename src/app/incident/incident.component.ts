@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Incident } from '../../shared/models/incident';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormArray, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-incident',
@@ -8,24 +8,20 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./incident.component.scss']
 })
 export class IncidentComponent implements OnInit {
-  incident: Incident = {
-    id: 1,
-    name: 'Windstorm'
-  };
 
-  incidentForm = new FormGroup({
-    firstName: new FormControl('',Validators.required),
-    lastName: new FormControl(''),
-    type: new FormControl(''),
-    values: new FormGroup({
-      value1: new FormControl(''),
-      value2: new FormControl(''),
-      value3: new FormControl('')
+  incidentForm = this.fb.group({
+    firstName: ['', Validators.required],
+    lastName: [''],
+    type: [''],
+    values: this.fb.group({
+      value1: [''],
+      value2: [''],
+      value3: ['']
     }),
-    note: new FormControl('')
+    note: ['']
   });
 
-  constructor() { }
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
   }
