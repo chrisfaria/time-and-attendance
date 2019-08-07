@@ -1,22 +1,14 @@
-<h2>Incident Details</h2>
+<p class="h4 mb-4">Add Incident<p>
 
-<form [formGroup]="incidentForm" (ngSubmit)="onSubmit()">
-  
+<form [formGroup]="incidentForm" (ngSubmit)="onSubmit()" class="text-center border border-light p-5">
   <label>
     First Name:
-    <input type="text" formControlName="firstName">
+    <input type="text" formControlName="name" class="form-control mb-4">
   </label>
-
-  <label>
-    Last Name:
-    <input type="text" formControlName="lastName">
-  </label>
-
   <label>
     Type:
-    <input type="text" formControlName="type">
+    <input type="text" formControlName="type" class="form-control mb-4">
   </label>
-
   <div formGroupName="values">
     <h4>Values</h4>
     <label>
@@ -32,22 +24,28 @@
       <input type="text" formControlName="value3">
     </label>
   </div>
-
+  <div formArrayName="details">
+    <h4>Details</h4> <button (click)="addDetail()">Add Detail</button>
+  
+    <div *ngFor="let detail of details.controls; let i=index">
+      <!-- The repeated alias template -->
+      <label>
+        Detail:
+        <input type="text" [formControlName]="i">
+      </label>
+    </div>
+  </div>
   <label>
     Note:
     <input type="text" formControlName="note">
   </label>
-
   <button type="submit" [disabled]="!incidentForm.valid">Submit</button>
-
 </form>
 
 <hr>
-
-<p>
+<p >
   Form Value: {{ incidentForm.value | json }}
 </p>
-
 <p>
   Form Status: {{ incidentForm.status }}
 </p>

@@ -10,14 +10,16 @@ import { FormBuilder, FormArray, Validators } from '@angular/forms';
 export class IncidentComponent implements OnInit {
 
   incidentForm = this.fb.group({
-    firstName: ['', Validators.required],
-    lastName: [''],
+    name: ['', Validators.required],
     type: [''],
     values: this.fb.group({
       value1: [''],
       value2: [''],
       value3: ['']
     }),
+    details: this.fb.array([
+      this.fb.control('')
+    ]),
     note: ['']
   });
 
@@ -29,6 +31,14 @@ export class IncidentComponent implements OnInit {
   onSubmit() {
     // TODO: Use EventEmitter with form value
     console.warn(this.incidentForm.value);
+  }
+
+  get details() {
+    return this.incidentForm.get('details') as FormArray;
+  }
+
+  addDetail() {
+    this.details.push(this.fb.control(''));
   }
 
 }
