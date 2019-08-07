@@ -1,0 +1,52 @@
+<h2>{{incident.name | uppercase}} Details</h2>
+<div><span>id: </span>{{incident.id}}</div>
+
+<div>
+  <label>name:
+    <input [(ngModel)]="incident.name" placeholder="name"/>
+  </label>
+</div>
+
+<form [formGroup]="incidentForm" (ngSubmit)="onSubmit()">
+  
+  <label>
+    First Name:
+    <input type="text" formControlName="firstName">
+  </label>
+
+  <label>
+    Last Name:
+    <input type="text" formControlName="lastName">
+  </label>
+
+  <label>
+    Type:
+    <input type="text" formControlName="type">
+  </label>
+
+  <div formGroupName="values">
+    <h3>Values</h3>
+    <label>
+      Value1:
+      <input type="text" formControlName="value1">
+    </label>
+    <label>
+      Value2:
+      <input type="text" formControlName="value2">
+    </label>
+    <label>
+      Value3:
+      <input type="text" formControlName="value3">
+    </label>
+  </div>
+
+  <label>
+    Note:
+    <input type="text" formControlName="note">
+  </label>
+
+  <button type="submit" [disabled]="!incidentForm.valid">Submit</button>
+  <p>
+    Form Status: {{ incidentForm.status }}
+  </p>
+</form>
