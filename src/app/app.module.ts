@@ -7,6 +7,11 @@ import { IncidentComponent } from './incident/incident.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // <-- NgModel lives here 
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { FirebaseService } from "./services/firebase.service"
+import { environment } from '../environments/environment';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,9 +21,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // <-- NgMode
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+ 	  AngularFirestoreModule
   ],
-  providers: [],
+  providers: [FirebaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

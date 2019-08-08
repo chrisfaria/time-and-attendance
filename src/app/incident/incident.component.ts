@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Incident } from '../../shared/models/incident';
+import { FirebaseService } from '../services/firebase.service'
 import { FormBuilder, FormArray, Validators } from '@angular/forms';
 
 @Component({
@@ -23,7 +24,7 @@ export class IncidentComponent implements OnInit {
     note: ['']
   });
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private firebaseService: FirebaseService) { }
 
   ngOnInit() {
   }
@@ -31,6 +32,11 @@ export class IncidentComponent implements OnInit {
   onSubmit() {
     // TODO: Use EventEmitter with form value
     console.warn(this.incidentForm.value);
+    this.firebaseService.createIncident(this.incidentForm.value)
+         .then(res => {
+             /*do something here....
+             maybe clear the form or give a success message*/
+         });
   }
 
   get details() {

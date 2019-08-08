@@ -1,6 +1,6 @@
 <p class="h4 mb-4">Add Incident<p>
 
-<form [formGroup]="incidentForm" (ngSubmit)="onSubmit()" class="text-center border border-light p-5">
+<form [formGroup]="incidentForm" class="text-center border border-light p-5">
   <label>
     First Name:
     <input type="text" formControlName="name" class="form-control mb-4">
@@ -39,7 +39,7 @@
     Note:
     <input type="text" formControlName="note">
   </label>
-  <button type="submit" [disabled]="!incidentForm.valid">Submit</button>
+  <button type="submit" (click)="onSubmit()" [disabled]="!incidentForm.valid">Submit</button>
 </form>
 
 <hr>
