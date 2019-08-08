@@ -1,45 +1,39 @@
-<p class="h4 mb-4">Add Incident<p>
+<h3>Add Incident</h3>
+<form [formGroup]="incidentForm" class="tna-form">
+    <mat-form-field class="tna-full-width">
+        <input matInput placeholder="Name" formControlName="name">
+    </mat-form-field>
 
-<form [formGroup]="incidentForm" class="text-center border border-light p-5">
-  <label>
-    First Name:
-    <input type="text" formControlName="name" class="form-control mb-4">
-  </label>
-  <label>
-    Type:
-    <input type="text" formControlName="type" class="form-control mb-4">
-  </label>
-  <div formGroupName="values">
-    <h4>Values</h4>
-    <label>
-      Value1:
-      <input type="text" formControlName="value1">
-    </label>
-    <label>
-      Value2:
-      <input type="text" formControlName="value2">
-    </label>
-    <label>
-      Value3:
-      <input type="text" formControlName="value3">
-    </label>
-  </div>
+    <mat-form-field class="tna-full-width">
+        <input matInput placeholder="Type" formControlName="type">
+    </mat-form-field>
+
+
+    <mat-form-field>
+        <input type="text" matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="date"> 
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+
+
+
+
   <div formArrayName="details">
-    <h4>Details</h4> <button (click)="addDetail()">Add Detail</button>
-  
     <div *ngFor="let detail of details.controls; let i=index">
       <!-- The repeated alias template -->
-      <label>
-        Detail:
-        <input type="text" [formControlName]="i">
-      </label>
+      <mat-form-field class="tna-full-width">
+          <input matInput placeholder="Detail" [formControlName]="i">
+      </mat-form-field>
     </div>
+    <button mat-raised-button (click)="addDetail()">Add another detail</button>
   </div>
-  <label>
-    Note:
-    <input type="text" formControlName="note">
-  </label>
-  <button type="submit" (click)="onSubmit()" [disabled]="!incidentForm.valid">Submit</button>
+  
+  <mat-form-field class="tna-full-width">
+      <textarea matInput placeholder="Additional notes here" formControlName="note"></textarea>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit" (click)="onSubmit()" [disabled]="!incidentForm.valid">Submit</button>
 </form>
 
 <hr>

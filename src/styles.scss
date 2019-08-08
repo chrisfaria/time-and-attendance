@@ -1,17 +1,11 @@
-button {
-    font-family: Arial;
-    background-color: #eee;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    cursor: hand;
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+.tna-form {
+    min-width: 100px;
+    max-width: 500px;
+    width: 100%;
 }
-button:hover {
-    background-color: #cfd8dc;
+  
+.tna-full-width {
+    width: 100%;
 }
-button:disabled {
-    background-color: #eee;
-    color: #aaa;
-    cursor: auto;
-  }

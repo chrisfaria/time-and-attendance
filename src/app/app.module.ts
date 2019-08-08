@@ -6,6 +6,11 @@ import { AppComponent } from './app.component';
 import { IncidentComponent } from './incident/incident.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // <-- NgModel lives here 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -23,7 +28,12 @@ import { environment } from '../environments/environment';
     FormsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
- 	  AngularFirestoreModule
+ 	  AngularFirestoreModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatInputModule,
+    MatDatepickerModule, MatNativeDateModule
   ],
   providers: [FirebaseService],
   bootstrap: [AppComponent]

@@ -1,15 +1,9 @@
-<div class="container">
-  <div class="jumbotron">
-    <h1>{{title}}</h1>
-    <h2>Tool to help track the team</h2>
-  </div>
+<mat-toolbar>
+  {{title}}
+</mat-toolbar>
 
-  <div class="panel panel-primary">
-    <div class="panel-heading">Status</div>
-    <div class="panel-body">
-      <app-incident></app-incident>
-    </div>
-  </div>
+<div>
+  <app-incident></app-incident>
 </div>
 
 <router-outlet></router-outlet>
