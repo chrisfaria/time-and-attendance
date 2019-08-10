@@ -11,6 +11,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
+import { MatSelectModule } from '@angular/material/select';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -33,7 +36,9 @@ import { environment } from '../environments/environment';
     MatButtonModule,
     MatToolbarModule,
     MatInputModule,
-    MatDatepickerModule, MatNativeDateModule
+    MatDatepickerModule, MatNativeDateModule,
+    MatSelectModule,
+    NgxMaterialTimepickerModule
   ],
   providers: [FirebaseService],
   bootstrap: [AppComponent]

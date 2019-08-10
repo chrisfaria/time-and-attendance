@@ -3,6 +3,16 @@ import { Incident } from '../../shared/models/incident';
 import { FirebaseService } from '../services/firebase.service'
 import { FormBuilder, FormArray, Validators, FormControl } from '@angular/forms';
 
+export interface Name {
+  value: string;
+  viewValue: string;
+}
+
+export interface IncidentType {
+  value: string;
+  viewValue: string;
+}
+
 @Component({
   selector: 'app-incident',
   templateUrl: './incident.component.html',
@@ -11,13 +21,40 @@ import { FormBuilder, FormArray, Validators, FormControl } from '@angular/forms'
 export class IncidentComponent implements OnInit {
 
   today = new Date();
+  testnote = true;
+
+  names: Name[] = [
+    {value: '001-Manpreet', viewValue: 'Manpreet'},
+    {value: '001-Sidd', viewValue: 'Sidd'},
+    {value: '001-Gaurav', viewValue: 'Gaurav'},
+    {value: '001-Aatif', viewValue: 'Aatif'},
+    {value: '001-Uzma', viewValue: 'Uzma'}
+  ];
+
+  types: IncidentType[] = [
+    {value: '001-LateArrival', viewValue: 'Late arrival'},
+    {value: '002-Leave early', viewValue: 'Leave early'},
+    {value: '003-Vacation', viewValue: 'Vacation'},
+    {value: '004-Sick day', viewValue: 'Sick day'},
+    {value: '005-Altered schedule', viewValue: 'Altered schedule'},
+    {value: '006-Long lunch', viewValue: 'Long lunch'},
+    {value: '007-Work from home', viewValue: 'Work from home'},
+    {value: '008-Lieu day', viewValue: 'Lieu day'},
+    {value: '009-Overtime', viewValue: 'Overtime'},
+    {value: '011-Personal day', viewValue: 'Personal day'},
+    {value: '010-Leave of absence', viewValue: 'Leave of absence'},
+    {value: '012-Note', viewValue: 'Note'},
+    {value: '013-Event', viewValue: 'Event'}
+  ];
 
   incidentForm = this.fb.group({
     name: ['', Validators.required],
     type: ['', Validators.required],
-    //type: ['', Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')],
-    //type: ['', Validators.pattern('/^(((0[1-9]|[12]\d|3[01])-(0[13578]|1[02])-((19|[2-9]\d)\d{2}))|((0[1-9]|[12]\d|30)-(0[13456789]|1[012])-((19|[2-9]\d)\d{2}))|((0[1-9]|1\d|2[0-8])-02-((19|[2-9]\d)\d{2}))|(29-02-((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))))$/')],
     date: [this.today],
+    time1: [''],
+    time2: [''],
+    hours: [''],
+    days: [''],
     //date: [this.today, Validators.pattern('^(([1-9])|((1)[0-2]))(\/)([1-9]|[1-2][0-9]|(3)[0-1])(\/)\d{4}$')],
     //date: [this.today, Validators.pattern('^\d{4}(-)(((0)[0-9])|((1)[0-2]))(-)([0-2][0-9]|(3)[0-1]).*$')],
     details: this.fb.array([
@@ -25,6 +62,8 @@ export class IncidentComponent implements OnInit {
     ]),
     note: ['']
   });
+
+  
 
   constructor(private fb: FormBuilder, private firebaseService: FirebaseService) { }
 
@@ -50,4 +89,12 @@ export class IncidentComponent implements OnInit {
     this.details.push(this.fb.control(''));
   }
 
+  checkValue()
+  {
+    if (this.incidentForm.value.type == '003-Vacation')
+    {
+      return true;
+    }
+    return false;
+  }
 }

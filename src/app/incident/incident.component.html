@@ -1,24 +1,38 @@
 <h3>Add Incident</h3>
 <form [formGroup]="incidentForm" class="tna-form">
-    <mat-form-field class="tna-full-width">
-        <input matInput placeholder="Name" formControlName="name">
-    </mat-form-field>
 
-    <mat-form-field class="tna-full-width">
-        <input matInput placeholder="Type" formControlName="type">
-    </mat-form-field>
+  <mat-form-field class="tna-full-width">  
+      <mat-label>Name</mat-label>
+      <mat-select formControlName="name">  
+          <mat-option *ngFor="let name of names" [value]="name.value">
+              {{name.viewValue}}
+          </mat-option>
+      </mat-select>  
+  </mat-form-field> 
 
+  <mat-form-field class="tna-full-width">  
+      <mat-label>Type</mat-label>
+      <mat-select formControlName="type">  
+          <mat-option *ngFor="let type of types" [value]="type.value">
+              {{type.viewValue}}
+          </mat-option>
+      </mat-select>  
+  </mat-form-field> 
 
-    <mat-form-field>
-        <input type="text" matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="date"> 
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-
-
-
-
-
+  <div>
+  <mat-form-field>
+      <input type="text" matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="date"> 
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+</div>
+<div>
+  <mat-form-field>
+    <mat-label>Start Time</mat-label>
+    <input matInput [ngxTimepicker]="time1" formControlName="time1">
+    <ngx-material-timepicker #time1></ngx-material-timepicker>
+  </mat-form-field> 
+</div>
   <div formArrayName="details">
     <div *ngFor="let detail of details.controls; let i=index">
       <!-- The repeated alias template -->
@@ -29,16 +43,21 @@
     <button mat-raised-button (click)="addDetail()">Add another detail</button>
   </div>
   
-  <mat-form-field class="tna-full-width">
-      <textarea matInput placeholder="Additional notes here" formControlName="note"></textarea>
-  </mat-form-field>
+  <div *ngIf="checkValue()">
+    <mat-form-field class="tna-full-width">
+        <textarea matInput placeholder="Additional notes here" formControlName="note"></textarea>
+    </mat-form-field>
+  </div>
 
-  <button mat-raised-button color="primary" type="submit" (click)="onSubmit()" [disabled]="!incidentForm.valid">Submit</button>
+  <button mat-raised-button color="primary" type="submit" (click)="checkValue()" [disabled]="!incidentForm.valid">Submit</button>
 </form>
 
 <hr>
 <p >
   Form Value: {{ incidentForm.value | json }}
+</p>
+<p>
+  Selected Name: {{ incidentForm.value.name }}
 </p>
 <p>
   Form Status: {{ incidentForm.status }}
