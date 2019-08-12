@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { IncidentComponent } from './incident/incident.component';
+import { AddIncidentComponent } from './add-incident/add-incident.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // <-- NgModel lives here 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,11 +19,13 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { FirebaseService } from "./services/firebase.service"
 import { environment } from '../environments/environment';
+import { QueryIncidentsComponent } from './query-incidents/query-incidents.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    IncidentComponent
+    AddIncidentComponent,
+    QueryIncidentsComponent
   ],
   imports: [
     BrowserModule,
