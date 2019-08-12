@@ -1,8 +1,13 @@
-<mat-toolbar>
-  {{title}}
+<mat-toolbar color='primary'>
+  <span>{{title}}</span>
+
+  <!-- This fills the remaining space of the current row -->
+  <span class="tna-fill-remaining-space"></span>
+
+  <span>Right Aligned Text</span>
 </mat-toolbar>
 
-<div>
+<div class="tna-main-content">
   <app-incident></app-incident>
 </div>
 

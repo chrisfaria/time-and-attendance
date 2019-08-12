@@ -1,5 +1,10 @@
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 
+.tna-main-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
 .tna-form {
     min-width: 100px;
     max-width: 500px;
@@ -8,4 +13,10 @@
   
 .tna-full-width {
     width: 100%;
+}
+
+.tna-fill-remaining-space {
+    /* This fills the remaining space, by using flexbox. 
+       Every toolbar row uses a flexbox row layout. */
+    flex: 1 1 auto;
 }
