@@ -86,8 +86,13 @@ export class AddIncidentComponent implements OnInit {
     // TODO: Use EventEmitter with form value
     console.warn('NEW CREATE');
     console.warn(this.addIncidentForm.value);
+    this.createIncident(this.addIncidentForm.value);
+  }
+
+  createIncident(incident)
+  {
     this.firebaseService
-      .createIncident(this.addIncidentForm.value)
+      .createIncident(incident)
       .then(resp => {
         console.log(resp);
       })
@@ -97,16 +102,7 @@ export class AddIncidentComponent implements OnInit {
   }
 
   testFirestore() {
-    this.firebaseService.getIncidents().subscribe(data => {
-      this.incidents = data.map(e => {
-        return {
-          id: e.payload.doc.id,
-          name: e.payload.doc.data()['name'],
-          note: e.payload.doc.data()['note'],
-        };
-      })
-      console.log(this.incidents);
-    });
+    this.initializeData();
   }
 
   isTimeType()
@@ -155,5 +151,30 @@ export class AddIncidentComponent implements OnInit {
       return true;
     }
     return false;
+  }
+
+  initializeData()
+  {
+    // const initInci = <Incident> {
+    //   name: "Aatif",
+    //   date: "Jan-7-2019",
+    //   type: "Late",
+    //   days: 0,
+    //   hours: 0,
+    //   time1: "9:35pm",
+    //   time2: "",
+    //   note: "Pick up bart",
+    // }
+
+    this.createIncident(<Incident> {
+      name: "Aatif",
+      date: "Jan-7-2019",
+      type: "Late",
+      days: 0,
+      hours: 0,
+      time1: "9:35pm",
+      time2: "",
+      note: "Pick up bart",
+    });
   }
 }

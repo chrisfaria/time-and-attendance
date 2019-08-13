@@ -13,7 +13,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 import { MatSelectModule } from '@angular/material/select';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
-import { MatExpansionModule } from '@angular/material/expansion';
+import { AgGridModule } from 'ag-grid-angular';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -41,7 +41,7 @@ import { IncidentsComponent } from './incidents/incidents.component';
     MatDatepickerModule, MatNativeDateModule,
     MatSelectModule,
     NgxMaterialTimepickerModule,
-    MatExpansionModule
+    AgGridModule.withComponents([])
   ],
   providers: [FirebaseService],
   bootstrap: [AppComponent]

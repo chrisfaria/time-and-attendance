@@ -1,18 +1,9 @@
 <h3>Incidents List</h3>
 
-
-
-<mat-accordion>
-  <mat-expansion-panel *ngFor="let incident of incidents">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        <b>{{incident.name}}</b> {{incident.type}}
-      </mat-panel-title>
-      <mat-panel-description>
-        {{incident.date}}
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-
-    <p>{{incident.note}}</p>
-  </mat-expansion-panel>
-</mat-accordion>
+<ag-grid-angular 
+    style="width: 500px; height: 500px;" 
+    class="ag-theme-balham"
+    [rowData]="rowData" 
+    [columnDefs]="columnDefs"
+    >
+</ag-grid-angular>
