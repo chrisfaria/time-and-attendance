@@ -15,6 +15,7 @@ export interface IncidentType {
 }
 
 @Component({
+  selector: 'add-incident',
   templateUrl: './add-incident.component.html',
   styleUrls: ['./add-incident.component.scss']
 })
@@ -86,7 +87,7 @@ export class AddIncidentComponent implements OnInit {
     console.warn('NEW CREATE');
     console.warn(this.addIncidentForm.value);
     this.firebaseService
-      .create_Incident(this.addIncidentForm.value)
+      .createIncident(this.addIncidentForm.value)
       .then(resp => {
         console.log(resp);
       })
@@ -96,7 +97,7 @@ export class AddIncidentComponent implements OnInit {
   }
 
   testFirestore() {
-    this.firebaseService.get_Incidents().subscribe(data => {
+    this.firebaseService.getIncidents().subscribe(data => {
       this.incidents = data.map(e => {
         return {
           id: e.payload.doc.id,
