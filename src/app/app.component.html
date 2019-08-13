@@ -4,11 +4,14 @@
   <!-- This fills the remaining space of the current row -->
   <span class="tna-fill-remaining-space"></span>
 
-  <span>Right Aligned Text</span>
+  <span>
+    <a [routerLink]="['/incidents']">Incidents</a>
+    <a [routerLink]="['/add']">Add</a>
+  </span>
 </mat-toolbar>
 
 <div class="tna-main-content">
-  <add-incident></add-incident>
+  <router-outlet></router-outlet>
 </div>
 
 <router-outlet></router-outlet>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Incident } from '../../shared/models/incident';
 import { FirebaseService } from '../services/firebase.service'
 import { FormBuilder, FormArray, Validators, FormControl } from '@angular/forms';
+import { EPERM } from 'constants';
 
 export interface Name {
   value: string;
@@ -14,7 +15,6 @@ export interface IncidentType {
 }
 
 @Component({
-  selector: 'add-incident',
   templateUrl: './add-incident.component.html',
   styleUrls: ['./add-incident.component.scss']
 })
@@ -24,6 +24,7 @@ export class AddIncidentComponent implements OnInit {
   testnote = true;
   valueLabel1 = '';
   valueLabel2 = '';
+  incidents: any;
 
   names: Name[] = [
     {value: '001-Manpreet', viewValue: 'Manpreet'},
@@ -80,12 +81,31 @@ export class AddIncidentComponent implements OnInit {
          });
   }
 
-  get details() {
-    return this.addIncidentForm.get('details') as FormArray;
+  onCreate() {
+    // TODO: Use EventEmitter with form value
+    console.warn('NEW CREATE');
+    console.warn(this.addIncidentForm.value);
+    this.firebaseService
+      .create_Incident(this.addIncidentForm.value)
+      .then(resp => {
+        console.log(resp);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
-  addDetail() {
-    this.details.push(this.fb.control(''));
+  testFirestore() {
+    this.firebaseService.get_Incidents().subscribe(data => {
+      this.incidents = data.map(e => {
+        return {
+          id: e.payload.doc.id,
+          name: e.payload.doc.data()['name'],
+          note: e.payload.doc.data()['note'],
+        };
+      })
+      console.log(this.incidents);
+    });
   }
 
   isTimeType()

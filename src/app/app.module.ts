@@ -19,13 +19,13 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { FirebaseService } from "./services/firebase.service"
 import { environment } from '../environments/environment';
-import { QueryIncidentsComponent } from './query-incidents/query-incidents.component';
+import { IncidentsComponent } from './incidents/incidents.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddIncidentComponent,
-    QueryIncidentsComponent
+    IncidentsComponent
   ],
   imports: [
     BrowserModule,

@@ -7,6 +7,7 @@
       <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
 
+  <div *ngIf='names'>
   <mat-form-field class="tna-full-width">  
       <mat-label>Name</mat-label>
       <mat-select formControlName="name">  
@@ -15,7 +16,9 @@
           </mat-option>
       </mat-select>  
   </mat-form-field> 
+  </div>
 
+  <div *ngIf='types'>
   <mat-form-field class="tna-full-width">  
       <mat-label>Type</mat-label>
       <mat-select formControlName="type">  
@@ -24,6 +27,7 @@
           </mat-option>
       </mat-select>  
   </mat-form-field> 
+  </div>
 
   <div *ngIf="isTimeType()">
     <mat-form-field>
@@ -64,7 +68,8 @@
       <textarea matInput placeholder="Additional notes here" formControlName="note"></textarea>
   </mat-form-field>
 
-  <button mat-raised-button color="primary" type="submit" (click)="checkValue()" [disabled]="!addIncidentForm.valid">Submit</button>
+  <button mat-raised-button color="primary" type="submit" (click)="onCreate()" [disabled]="!addIncidentForm.valid">Submit</button>
+  <button mat-raised-button color="accent" type="test" (click)="testFirestore()" >Submit</button>
 </form>
 
 <hr>
