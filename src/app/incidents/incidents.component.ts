@@ -15,9 +15,14 @@ export class IncidentsComponent implements OnInit {
   incidents: any;
 
   columnDefs = [
-    {headerName: 'Make', field: 'make' },
-    {headerName: 'Model', field: 'model' },
-    {headerName: 'Price', field: 'price'}
+    {headerName: 'Date', field: 'date' },
+    {headerName: 'Name', field: 'name' },
+    {headerName: 'Type', field: 'type'},
+    {headerName: 'Days', field: 'days'},
+    {headerName: 'Hours', field: 'hours'},
+    {headerName: 'Time 1', field: 'time1'},
+    {headerName: 'Time 2', field: 'time2'},
+    {headerName: 'Note', field: 'note'}
   ];
 
   rowData = [
@@ -33,10 +38,14 @@ export class IncidentsComponent implements OnInit {
       this.incidents = data.map(e => {
         return {
           id: e.payload.doc.id,
-          name: e.payload.doc.data()['name'],
           date: e.payload.doc.data()['date'],
+          name: e.payload.doc.data()['name'],
           type: e.payload.doc.data()['type'],
-          note: e.payload.doc.data()['note'],
+          days: e.payload.doc.data()['days'],
+          hours: e.payload.doc.data()['hours'],
+          time1: e.payload.doc.data()['time1'],
+          time2: e.payload.doc.data()['time2'],
+          note: e.payload.doc.data()['note']
         };
       })
       console.log(this.incidents);

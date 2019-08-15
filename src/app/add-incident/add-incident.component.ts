@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Incident } from '../../shared/models/incident';
 import { FirebaseService } from '../services/firebase.service'
-import { FormBuilder, FormArray, Validators, FormControl } from '@angular/forms';
-import { EPERM } from 'constants';
+import { FormBuilder, Validators } from '@angular/forms';
 
 export interface Name {
   value: string;
@@ -167,14 +166,213 @@ export class AddIncidentComponent implements OnInit {
     // }
 
     this.createIncident(<Incident> {
-      name: "Aatif",
-      date: "Jan-7-2019",
-      type: "Late",
+      name: 'Aatif',
+      date: '43472',
+      type: '001-LateArrival',
       days: 0,
       hours: 0,
-      time1: "9:35pm",
-      time2: "",
-      note: "Pick up bart",
-    });
+      time1: '9:56 am',
+      time2: '',
+      note: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+       });
+       
+       this.createIncident(<Incident> {
+      name: 'Aatif',
+      date: '43473',
+      type: '001-LateArrival',
+      days: 0,
+      hours: 0,
+      time1: '9:45 am',
+      time2: '',
+      note: 'Ultrices sagittis orci a scelerisque purus semper eget duis at.'
+      });
+       
+       this.createIncident(<Incident> {
+      name: 'Aatif',
+      date: '43474',
+      type: '001-LateArrival',
+      days: 0,
+      hours: 0,
+      time1: '9:35 am',
+      time2: '',
+      note: 'Orci eu lobortis elementum nibh.'
+      });
+       
+       this.createIncident(<Incident> {
+      name: 'Manpreet',
+      date: '43474',
+      type: '006-LongLunch',
+      days: 0,
+      hours: 2,
+      time1: '',
+      time2: '',
+      note: ''
+      });
+       
+       this.createIncident(<Incident> {
+      name: 'Uzma',
+      date: '43474',
+      type: '004-SickDay',
+      days: 5,
+      hours: 0,
+      time1: '',
+      time2: '',
+      note: 'Pharetra sit amet aliquam id diam maecenas ultricies.'
+      });
+       
+       this.createIncident(<Incident> {
+      name: 'Manpreet',
+      date: '43508',
+      type: '005-AlteredSchedule',
+      days: 0,
+      hours: 0,
+      time1: '7:00 am',
+      time2: '3:00 pm',
+      note: 'Pellentesque id nibh tortor id aliquet lectus proin nibh.'
+      });
+       
+       this.createIncident(<Incident> {
+      name: 'Aatif',
+      date: '43526',
+      type: '007-WorkFromHome',
+      days: 1,
+      hours: 0,
+      time1: '',
+      time2: '',
+      note: 'Sit amet est placerat in egestas erat imperdiet sed euismod.'
+      });
+       
+       this.createIncident(<Incident> {
+      name: 'Manpreet',
+      date: '43526',
+      type: '005-AlteredSchedule',
+      days: 0,
+      hours: 0,
+      time1: '7:00 am',
+      time2: '3:30 pm',
+      note: 'Sem et tortor consequat id porta nibh venenatis cras sed.'
+      });
+       
+       this.createIncident(<Incident> {
+      name: 'Uzma',
+      date: '43526',
+      type: '001-LateArrival',
+      days: 0,
+      hours: 0,
+      time1: '9:15 am',
+      time2: '',
+      note: 'Tortor pretium viverra suspendisse potenti nullam ac tortor vitae purus.'
+      });
+       
+       this.createIncident(<Incident> {
+      name: 'Manpreet',
+      date: '43526',
+      type: '001-LateArrival',
+      days: 0,
+      hours: 0,
+      time1: '10:49 am',
+      time2: '',
+      note: 'Auctor augue mauris augue neque gravida in fermentum et sollicitudin.'
+      });
+       
+       this.createIncident(<Incident> {
+      name: 'Aatif',
+      date: '43527',
+      type: '007-WorkFromHome',
+      days: 1,
+      hours: 0,
+      time1: '',
+      time2: '',
+      note: 'Nisi quis eleifend quam adipiscing vitae proin sagittis.'
+      });
+       
+       this.createIncident(<Incident> {
+      name: 'Uzma',
+      date: '43631',
+      type: '004-SickDay',
+      days: 1,
+      hours: 0,
+      time1: '',
+      time2: '',
+      note: 'Odio pellentesque diam volutpat commodo sed egestas egestas fringilla.'
+      });
+       
+       this.createIncident(<Incident> {
+      name: 'Uzma',
+      date: '43632',
+      type: '004-SickDay',
+      days: 1,
+      hours: 0,
+      time1: '',
+      time2: '',
+      note: 'Turpis egestas pretium aenean pharetra magna ac placerat vestibulum.'
+      });
+       
+       this.createIncident(<Incident> {
+      name: 'Uzma',
+      date: '43633',
+      type: '004-SickDay',
+      days: 1,
+      hours: 0,
+      time1: '',
+      time2: '',
+      note: 'Condimentum vitae sapien pellentesque habitant morbi tristique senectus et.'
+      });
+       
+       this.createIncident(<Incident> {
+      name: 'Aatif',
+      date: '43634',
+      type: '001-LateArrival',
+      days: 0,
+      hours: 0,
+      time1: '10:13 am',
+      time2: '',
+      note: 'Posuere ac ut consequat semper.'
+      });
+       
+       this.createIncident(<Incident> {
+      name: 'Manpreet',
+      date: '43634',
+      type: '013-Event',
+      days: 0,
+      hours: 0,
+      time1: '',
+      time2: '',
+      note: 'Mauris pharetra et ultrices neque ornare aenean euismod elementum nisi.'
+      });
+       
+       this.createIncident(<Incident> {
+      name: 'Uzma',
+      date: '43677',
+      type: '003-Vacation',
+      days: 1,
+      hours: 0,
+      time1: '',
+      time2: '',
+      note: 'Eu non diam phasellus vestibulum lorem sed risus.'
+      });
+       
+       this.createIncident(<Incident> {
+      name: 'Uzma',
+      date: '43679',
+      type: '003-Vacation',
+      days: 9,
+      hours: 0,
+      time1: '',
+      time2: '',
+      note: 'Volutpat consequat mauris nunc congue nisi vitae suscipit tellus.'
+      });
+       
+       this.createIncident(<Incident> {
+      name: 'Aatif',
+      date: '43690',
+      type: '001-LateArrival',
+      days: 0,
+      hours: 0,
+      time1: '9:44 am',
+      time2: '',
+      note: 'Me me me me me me'
+      });
+      
   }
 }
