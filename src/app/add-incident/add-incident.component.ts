@@ -74,11 +74,11 @@ export class AddIncidentComponent implements OnInit {
   onSubmit() {
     // TODO: Use EventEmitter with form value
     console.warn(this.addIncidentForm.value);
-    this.firebaseService.createIncident(this.addIncidentForm.value)
+    console.warn(this.addIncidentForm.value.date);
+    /*this.firebaseService.createIncident(this.addIncidentForm.value)
          .then(res => {
-             /*do something here....
-             maybe clear the form or give a success message*/
-         });
+             //do something here maybe clear the form or give a success message
+         });*/
   }
 
   onCreate() {
@@ -101,7 +101,11 @@ export class AddIncidentComponent implements OnInit {
   }
 
   testFirestore() {
-    this.initializeData();
+    //this.initializeData();
+    console.warn(this.addIncidentForm.value);
+    console.warn(this.addIncidentForm.value.date);
+    //https://momentjs.com/
+    const dateString = moment(this.addIncidentForm.value.date).format('YYYY-MM-DD');
   }
 
   isTimeType()

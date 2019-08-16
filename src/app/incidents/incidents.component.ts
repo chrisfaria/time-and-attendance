@@ -15,40 +15,34 @@ export class IncidentsComponent implements OnInit {
   incidents: any;
 
   columnDefs = [
-    {headerName: 'Date', field: 'date' },
-    {headerName: 'Name', field: 'name' },
-    {headerName: 'Type', field: 'type'},
-    {headerName: 'Days', field: 'days'},
-    {headerName: 'Hours', field: 'hours'},
-    {headerName: 'Time 1', field: 'time1'},
-    {headerName: 'Time 2', field: 'time2'},
-    {headerName: 'Note', field: 'note'}
-  ];
-
-  rowData = [
-    { make: 'Toyota', model: 'Celica', price: 35000 },
-    { make: 'Ford', model: 'Mondeo', price: 32000 },
-    { make: 'Porsche', model: 'Boxter', price: 72000 }
+    {headerName: 'Date', field: 'date', editable: true,  sortable: true, filter: true, resizable: true, width: 120, sort: "desc"},
+    {headerName: 'Name', field: 'name', editable: true,  sortable: true, filter: true, resizable: true, width: 120},
+    {headerName: 'Type', field: 'type', editable: true,  sortable: true, filter: true, resizable: true, width: 160},
+    {headerName: 'Days', field: 'days', editable: true,  sortable: true, filter: true, resizable: true, width: 80},
+    {headerName: 'Hours', field: 'hours', editable: true,  sortable: true, filter: true, resizable: true, width: 80},
+    {headerName: 'Time 1', field: 'time1', editable: true,  sortable: true, filter: true, resizable: true, width: 100},
+    {headerName: 'Time 2', field: 'time2', editable: true,  sortable: true, filter: true, resizable: true, width: 100},
+    {headerName: 'Note', field: 'note', editable: true,  sortable: true, filter: true, resizable: true, width: 515}
   ];
 
   constructor(private firebaseService: FirebaseService) { }
 
   ngOnInit() {
     this.firebaseService.getIncidents().subscribe(data => {
-      this.incidents = data.map(e => {
+      this.incidents = data.map(r => {
+        console.warn(r.payload.doc.data()['date']);
         return {
-          id: e.payload.doc.id,
-          date: e.payload.doc.data()['date'],
-          name: e.payload.doc.data()['name'],
-          type: e.payload.doc.data()['type'],
-          days: e.payload.doc.data()['days'],
-          hours: e.payload.doc.data()['hours'],
-          time1: e.payload.doc.data()['time1'],
-          time2: e.payload.doc.data()['time2'],
-          note: e.payload.doc.data()['note']
+          id: r.payload.doc.id,
+          date: r.payload.doc.data()['date'],
+          name: r.payload.doc.data()['name'],
+          type: r.payload.doc.data()['type'],
+          days: r.payload.doc.data()['days'],
+          hours: r.payload.doc.data()['hours'],
+          time1: r.payload.doc.data()['time1'],
+          time2: r.payload.doc.data()['time2'],
+          note: r.payload.doc.data()['note']
         };
       })
-      console.log(this.incidents);
     });
   }
 }
