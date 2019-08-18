@@ -1,11 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FirebaseService } from '../services/firebase.service';
+
+export interface DialogData {
+  count: number;
+  delete: any;
+}
 
 @Component({
   templateUrl: './incidents.component.html',
   styleUrls: ['./incidents.component.scss']
 })
 export class IncidentsComponent implements OnInit {
+
+  private gridApi;
+  private gridColumnApi;
 
   incidents: any;
   showAdd: any = false;
@@ -29,7 +38,7 @@ export class IncidentsComponent implements OnInit {
     {headerName: 'Note', field: 'note', editable: true,  sortable: true, filter: true, resizable: true, width: 515}
   ];
 
-  constructor(private firebaseService: FirebaseService) { }
+  constructor(private firebaseService: FirebaseService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.firebaseService.getIncidents().subscribe(data => {
@@ -47,6 +56,11 @@ export class IncidentsComponent implements OnInit {
         };
       })
     });
+  }
+
+  onGridReady(params) {
+    this.gridApi = params.api;
+    this.gridColumnApi = params.columnApi;
   }
 
   OnClickShowAdd() {
@@ -67,6 +81,29 @@ export class IncidentsComponent implements OnInit {
     this.updateIncident(event.data.id, event.data)
   }
 
+  onRemoveSelected() {
+    var selectedData = this.gridApi.getSelectedRows();
+    if(selectedData.length > 0) {
+      console.warn(selectedData);
+
+      const dialogRef = this.dialog.open(IncidentDeleteDialog,{
+        //width: '250px',
+        data: {count: selectedData.length}
+      });
+      
+      dialogRef.afterClosed().subscribe((confirmed: boolean) => {
+        if (confirmed) {
+          selectedData.forEach(element => {
+            console.log('attempting to delete :' + element.id);
+            this.deleteIncident(element.id);
+          });
+        } else {
+          console.log('deletion cancelled');
+        }
+      });
+    }
+  }
+
   updateIncident(id, incident)
   {
     this.firebaseService
@@ -75,7 +112,40 @@ export class IncidentsComponent implements OnInit {
         console.log(resp);
       })
       .catch(error => {
-        console.log(error);
+        console.warn(error);
       });
   }
+
+  deleteIncident(id)
+  {
+    this.firebaseService
+      .deleteIncident(id)
+      .then(resp => {
+        console.log(resp);
+      })
+      .catch(error => {
+        console.warn(error);
+      });
+  }
+}
+
+@Component({
+  selector: 'incident-delete-dialog',
+  templateUrl: 'incident-delete-dialog.html',
+})
+export class IncidentDeleteDialog {
+  
+  constructor(
+    public dialogRef: MatDialogRef<IncidentDeleteDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData)
+     {}
+
+  onNoDelClick(): void {
+    this.dialogRef.close(false);
+  }
+
+  onConfirmDelClick(): void {
+    this.dialogRef.close(true);
+  }
+
 }

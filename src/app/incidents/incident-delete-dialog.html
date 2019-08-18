@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Deletion Confimation</h1>
+<div mat-dialog-content>
+  <p>Are you sure you want to delete the {{data.count}} selected incidents</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button mat-dialog-close tabindex="-1" (click)="onNoDelClick()" cdkFocusInitial>No Thanks</button>
+  <button mat-raised-button color="warn" (click)="onConfirmDelClick()" tabindex="1">DELETE</button>
+</div>
