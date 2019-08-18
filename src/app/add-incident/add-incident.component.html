@@ -1,84 +1,79 @@
-<h3>Add Incident</h3>
-<form [formGroup]="addIncidentForm" class="tna-form">
+<mat-card>
+  <mat-card-content>
+    <h3>Add Incident</h3>
+    <form [formGroup]="addIncidentForm" class="tna-form">
 
-  <mat-form-field>
-      <input type="text" matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="date"> 
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
+      <mat-form-field>
+          <input type="text" matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="date"> 
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
 
-  <div *ngIf='names'>
-  <mat-form-field class="tna-full-width">  
-      <mat-label>Name</mat-label>
-      <mat-select formControlName="name">  
-          <mat-option *ngFor="let name of names" [value]="name.value">
-              {{name.viewValue}}
-          </mat-option>
-      </mat-select>  
-  </mat-form-field> 
-  </div>
+      <div *ngIf='names'>
+      <mat-form-field class="tna-full-width">  
+          <mat-label>Name</mat-label>
+          <mat-select formControlName="name">  
+              <mat-option *ngFor="let name of names" [value]="name.value">
+                  {{name.viewValue}}
+              </mat-option>
+          </mat-select>  
+      </mat-form-field> 
+      </div>
 
-  <div *ngIf='types'>
-  <mat-form-field class="tna-full-width">  
-      <mat-label>Type</mat-label>
-      <mat-select formControlName="type">  
-          <mat-option *ngFor="let type of types" [value]="type.value">
-              {{type.viewValue}}
-          </mat-option>
-      </mat-select>  
-  </mat-form-field> 
-  </div>
+      <div *ngIf='types'>
+      <mat-form-field class="tna-full-width">  
+          <mat-label>Type</mat-label>
+          <mat-select formControlName="type">  
+              <mat-option *ngFor="let type of types" [value]="type.value">
+                  {{type.viewValue}}
+              </mat-option>
+          </mat-select>  
+      </mat-form-field> 
+      </div>
 
-  <div *ngIf="isTimeType()">
-    <mat-form-field>
-      <mat-label>{{ valueLabel1 }}</mat-label>
-      <input matInput [ngxTimepicker]="time1" formControlName="time1">
-      <ngx-material-timepicker #time1></ngx-material-timepicker>
-    </mat-form-field> 
-  </div>
-
-  <div *ngIf="isStartEndTimeType()">
-    <mat-form-field>
-      <mat-label>{{ valueLabel1 }}</mat-label>
-      <input matInput [ngxTimepicker]="time1" formControlName="time1">
-      <ngx-material-timepicker #time1></ngx-material-timepicker>
-    </mat-form-field> 
-    <mat-form-field>
-        <mat-label>{{ valueLabel2 }}</mat-label>
-        <input matInput [ngxTimepicker]="time2" formControlName="time2">
-        <ngx-material-timepicker #time2></ngx-material-timepicker>
-    </mat-form-field> 
-  </div>
-
-  <div *ngIf="isHoursType()">
-      <mat-form-field class="example-full-width">
+      <div *ngIf="isTimeType()">
+        <mat-form-field>
           <mat-label>{{ valueLabel1 }}</mat-label>
-          <input matInput formControlName="hours">
+          <input matInput [ngxTimepicker]="time1" formControlName="time1">
+          <ngx-material-timepicker #time1></ngx-material-timepicker>
+        </mat-form-field> 
+      </div>
+
+      <div *ngIf="isStartEndTimeType()">
+        <mat-form-field>
+          <mat-label>{{ valueLabel1 }}</mat-label>
+          <input matInput [ngxTimepicker]="time1" formControlName="time1">
+          <ngx-material-timepicker #time1></ngx-material-timepicker>
+        </mat-form-field> 
+        <mat-form-field>
+            <mat-label>{{ valueLabel2 }}</mat-label>
+            <input matInput [ngxTimepicker]="time2" formControlName="time2">
+            <ngx-material-timepicker #time2></ngx-material-timepicker>
+        </mat-form-field> 
+      </div>
+
+      <div *ngIf="isHoursType()">
+          <mat-form-field class="example-full-width">
+              <mat-label>{{ valueLabel1 }}</mat-label>
+              <input matInput formControlName="hours">
+          </mat-form-field>
+      </div>
+
+      <div *ngIf="isDaysType()">
+          <mat-label>{{ valueLabel1 }}</mat-label>
+          <mat-form-field class="example-full-width">
+              <input matInput formControlName="days">
+          </mat-form-field>
+      </div>
+        
+      <mat-form-field class="tna-full-width">
+          <textarea matInput placeholder="Additional notes here" formControlName="note"></textarea>
       </mat-form-field>
-  </div>
 
-  <div *ngIf="isDaysType()">
-      <mat-label>{{ valueLabel1 }}</mat-label>
-      <mat-form-field class="example-full-width">
-          <input matInput formControlName="days">
-      </mat-form-field>
-  </div>
-    
-  <mat-form-field class="tna-full-width">
-      <textarea matInput placeholder="Additional notes here" formControlName="note"></textarea>
-  </mat-form-field>
-
-  <button mat-raised-button color="primary" type="submit" (click)="onCreate()" [disabled]="!addIncidentForm.valid">Submit</button>
-  <button mat-raised-button color="accent" type="test" (click)="testFirestore()" >Submit</button>
-</form>
-
-<hr>
-<p >
-  Form Value: {{ addIncidentForm.value | json }}
-</p>
-<p>
-  Selected Name: {{ addIncidentForm.value.name }}
-</p>
-<p>
-  Form Status: {{ addIncidentForm.status }}
-</p>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit" (click)="onClickAddIncident()" [disabled]="!addIncidentForm.valid">Add Incident</button>
+      <button mat-raised-button color="accent" type="submit" (click)="onClickTest()" >Test</button>
+  </mat-card-actions>
+</mat-card>

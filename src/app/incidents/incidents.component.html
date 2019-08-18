@@ -1,5 +1,8 @@
-<h3>Incidents List</h3>
 
+<button mat-raised-button type="submit" (click)="OnClickShowAdd()">{{showAddText}}</button>
+<add-incident *ngIf="showAdd"></add-incident>
+
+<h3>Incidents List</h3>
 <ag-grid-angular 
     style="width: 1300px; height: 500px;" 
     class="ag-theme-balham"

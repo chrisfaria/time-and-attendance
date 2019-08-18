@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Incident } from '../../shared/models/incident';
 import { FirebaseService } from '../services/firebase.service'
 import { FormBuilder, Validators } from '@angular/forms';
+import * as moment from 'moment';
 
 export interface Name {
   value: string;
@@ -71,41 +72,25 @@ export class AddIncidentComponent implements OnInit {
 
   }
 
-  onSubmit() {
-    // TODO: Use EventEmitter with form value
-    console.warn(this.addIncidentForm.value);
-    console.warn(this.addIncidentForm.value.date);
-    /*this.firebaseService.createIncident(this.addIncidentForm.value)
-         .then(res => {
-             //do something here maybe clear the form or give a success message
-         });*/
-  }
+  onClickAddIncident() {
+    // make the incident date a string informat 'YYYY-MM-DD'
+    this.addIncidentForm.value.date = moment(this.addIncidentForm.value.date).format('YYYY-MM-DD')
 
-  onCreate() {
-    // TODO: Use EventEmitter with form value
-    console.warn('NEW CREATE');
+    // add the types so that the ag-grid listing of incidents
+    // can be selected via drop down depending on what type
+    //this.addIncidentForm.value.name = { value: this.addIncidentForm.value.name, type: 'name'};
+    //this.addIncidentForm.value.type = { value: this.addIncidentForm.value.type, type: 'type'};
+
     console.warn(this.addIncidentForm.value);
+
     this.createIncident(this.addIncidentForm.value);
   }
 
-  createIncident(incident)
-  {
-    this.firebaseService
-      .createIncident(incident)
-      .then(resp => {
-        console.log(resp);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }
-
-  testFirestore() {
+  onClickTest() {
     //this.initializeData();
     console.warn(this.addIncidentForm.value);
-    console.warn(this.addIncidentForm.value.date);
-    //https://momentjs.com/
-    const dateString = moment(this.addIncidentForm.value.date).format('YYYY-MM-DD');
+    this.addIncidentForm.value.name = { value: this.addIncidentForm.value.name, type: 'name'};
+    console.warn(this.addIncidentForm.value);
   }
 
   isTimeType()
@@ -156,6 +141,18 @@ export class AddIncidentComponent implements OnInit {
     return false;
   }
 
+  createIncident(incident)
+  {
+    this.firebaseService
+      .createIncident(incident)
+      .then(resp => {
+        console.log(resp);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
   initializeData()
   {
     // const initInci = <Incident> {
@@ -171,7 +168,7 @@ export class AddIncidentComponent implements OnInit {
 
     this.createIncident(<Incident> {
       name: 'Aatif',
-      date: '43472',
+      date: '2019-01-19',
       type: '001-LateArrival',
       days: 0,
       hours: 0,
@@ -182,7 +179,7 @@ export class AddIncidentComponent implements OnInit {
        
        this.createIncident(<Incident> {
       name: 'Aatif',
-      date: '43473',
+      date: '2019-03-08',
       type: '001-LateArrival',
       days: 0,
       hours: 0,
@@ -193,7 +190,7 @@ export class AddIncidentComponent implements OnInit {
        
        this.createIncident(<Incident> {
       name: 'Aatif',
-      date: '43474',
+      date: '2019-03-09',
       type: '001-LateArrival',
       days: 0,
       hours: 0,
@@ -204,7 +201,7 @@ export class AddIncidentComponent implements OnInit {
        
        this.createIncident(<Incident> {
       name: 'Manpreet',
-      date: '43474',
+      date: '2019-07-03',
       type: '006-LongLunch',
       days: 0,
       hours: 2,
@@ -215,7 +212,7 @@ export class AddIncidentComponent implements OnInit {
        
        this.createIncident(<Incident> {
       name: 'Uzma',
-      date: '43474',
+      date: '2019-07-05',
       type: '004-SickDay',
       days: 5,
       hours: 0,
@@ -226,7 +223,7 @@ export class AddIncidentComponent implements OnInit {
        
        this.createIncident(<Incident> {
       name: 'Manpreet',
-      date: '43508',
+      date: '2019-07-05',
       type: '005-AlteredSchedule',
       days: 0,
       hours: 0,
@@ -237,7 +234,7 @@ export class AddIncidentComponent implements OnInit {
        
        this.createIncident(<Incident> {
       name: 'Aatif',
-      date: '43526',
+      date: '2019-07-18',
       type: '007-WorkFromHome',
       days: 1,
       hours: 0,
@@ -248,7 +245,7 @@ export class AddIncidentComponent implements OnInit {
        
        this.createIncident(<Incident> {
       name: 'Manpreet',
-      date: '43526',
+      date: '2019-07-08',
       type: '005-AlteredSchedule',
       days: 0,
       hours: 0,
@@ -259,7 +256,7 @@ export class AddIncidentComponent implements OnInit {
        
        this.createIncident(<Incident> {
       name: 'Uzma',
-      date: '43526',
+      date: '2019-07-20',
       type: '001-LateArrival',
       days: 0,
       hours: 0,
@@ -270,7 +267,7 @@ export class AddIncidentComponent implements OnInit {
        
        this.createIncident(<Incident> {
       name: 'Manpreet',
-      date: '43526',
+      date: '2019-07-21',
       type: '001-LateArrival',
       days: 0,
       hours: 0,
@@ -281,7 +278,7 @@ export class AddIncidentComponent implements OnInit {
        
        this.createIncident(<Incident> {
       name: 'Aatif',
-      date: '43527',
+      date: '2019-08-01',
       type: '007-WorkFromHome',
       days: 1,
       hours: 0,
@@ -292,7 +289,7 @@ export class AddIncidentComponent implements OnInit {
        
        this.createIncident(<Incident> {
       name: 'Uzma',
-      date: '43631',
+      date: '2019-08-05',
       type: '004-SickDay',
       days: 1,
       hours: 0,
@@ -303,7 +300,7 @@ export class AddIncidentComponent implements OnInit {
        
        this.createIncident(<Incident> {
       name: 'Uzma',
-      date: '43632',
+      date: '2019-08-06',
       type: '004-SickDay',
       days: 1,
       hours: 0,
@@ -314,7 +311,7 @@ export class AddIncidentComponent implements OnInit {
        
        this.createIncident(<Incident> {
       name: 'Uzma',
-      date: '43633',
+      date: '2019-08-07',
       type: '004-SickDay',
       days: 1,
       hours: 0,
@@ -325,7 +322,7 @@ export class AddIncidentComponent implements OnInit {
        
        this.createIncident(<Incident> {
       name: 'Aatif',
-      date: '43634',
+      date: '2019-08-10',
       type: '001-LateArrival',
       days: 0,
       hours: 0,
@@ -336,7 +333,7 @@ export class AddIncidentComponent implements OnInit {
        
        this.createIncident(<Incident> {
       name: 'Manpreet',
-      date: '43634',
+      date: '2019-08-03',
       type: '013-Event',
       days: 0,
       hours: 0,
@@ -347,7 +344,7 @@ export class AddIncidentComponent implements OnInit {
        
        this.createIncident(<Incident> {
       name: 'Uzma',
-      date: '43677',
+      date: '2019-08-015',
       type: '003-Vacation',
       days: 1,
       hours: 0,
@@ -358,7 +355,7 @@ export class AddIncidentComponent implements OnInit {
        
        this.createIncident(<Incident> {
       name: 'Uzma',
-      date: '43679',
+      date: '2019-06-01',
       type: '003-Vacation',
       days: 9,
       hours: 0,
@@ -369,7 +366,7 @@ export class AddIncidentComponent implements OnInit {
        
        this.createIncident(<Incident> {
       name: 'Aatif',
-      date: '43690',
+      date: '2019-08-18',
       type: '001-LateArrival',
       days: 0,
       hours: 0,

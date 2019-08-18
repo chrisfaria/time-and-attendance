@@ -12,6 +12,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 import { MatSelectModule } from '@angular/material/select';
+import { MatCardModule } from '@angular/material/card';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { AgGridModule } from 'ag-grid-angular';
 
@@ -40,6 +41,7 @@ import { IncidentsComponent } from './incidents/incidents.component';
     MatInputModule,
     MatDatepickerModule, MatNativeDateModule,
     MatSelectModule,
+    MatCardModule,
     NgxMaterialTimepickerModule,
     AgGridModule.withComponents([])
   ],

@@ -1,11 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from '../services/firebase.service';
 
-export interface IncidentType {
-  value: string;
-  viewValue: string;
-}
-
 @Component({
   templateUrl: './incidents.component.html',
   styleUrls: ['./incidents.component.scss']
@@ -13,10 +8,19 @@ export interface IncidentType {
 export class IncidentsComponent implements OnInit {
 
   incidents: any;
+  showAdd: any = false;
+  showAddText: any = "Show Add Incident";
 
   columnDefs = [
     {headerName: 'Date', field: 'date', editable: true,  sortable: true, filter: true, resizable: true, width: 120, sort: "desc"},
-    {headerName: 'Name', field: 'name', editable: true,  sortable: true, filter: true, resizable: true, width: 120},
+    {headerName: 'Name', field: 'name', editable: true,  sortable: true, filter: true, resizable: true, width: 120, 
+      /*cellEditorSelector:function (params){
+        if (params.data.type === 'name') return {
+            component: 'agRichSelectCellEditor',
+            params: {values: ['Name1', 'Name2']}
+        };
+      }*/
+    },
     {headerName: 'Type', field: 'type', editable: true,  sortable: true, filter: true, resizable: true, width: 160},
     {headerName: 'Days', field: 'days', editable: true,  sortable: true, filter: true, resizable: true, width: 80},
     {headerName: 'Hours', field: 'hours', editable: true,  sortable: true, filter: true, resizable: true, width: 80},
@@ -44,5 +48,16 @@ export class IncidentsComponent implements OnInit {
         };
       })
     });
+  }
+
+  OnClickShowAdd() {
+    this.showAdd = !this.showAdd;
+
+    if (this.showAdd == false) {
+      this.showAddText = "Show Add Incident";
+    }
+    else {
+      this.showAddText = "Hide Add Incident";
+    }
   }
 }
