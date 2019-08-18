@@ -21,13 +21,13 @@ export class FirebaseService {
   }
 
   updateIncident(recordID,record){
-    this.afs
+    return this.afs
       .doc('incidents/' + recordID)
       .update(record);
   }
 
   deleteIncident(record_id) {
-    this.afs
+    return this.afs
       .doc('incidents/' + record_id)
       .delete();
   }

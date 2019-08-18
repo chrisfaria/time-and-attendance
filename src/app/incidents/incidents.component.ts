@@ -34,7 +34,6 @@ export class IncidentsComponent implements OnInit {
   ngOnInit() {
     this.firebaseService.getIncidents().subscribe(data => {
       this.incidents = data.map(r => {
-        console.warn(r.payload.doc.data()['date']);
         return {
           id: r.payload.doc.id,
           date: r.payload.doc.data()['date'],
@@ -59,5 +58,24 @@ export class IncidentsComponent implements OnInit {
     else {
       this.showAddText = "Hide Add Incident";
     }
+  }
+
+  onCellValueChanged(event) {
+    // handle the rest here
+
+    console.warn(event.data.id);
+    this.updateIncident(event.data.id, event.data)
+  }
+
+  updateIncident(id, incident)
+  {
+    this.firebaseService
+      .updateIncident(id,incident)
+      .then(resp => {
+        console.log(resp);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 }

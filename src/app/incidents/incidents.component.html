@@ -8,5 +8,6 @@
     class="ag-theme-balham"
     [rowData]="incidents" 
     [columnDefs]="columnDefs"
+    (cellValueChanged)="onCellValueChanged($event)"
     >
 </ag-grid-angular>
