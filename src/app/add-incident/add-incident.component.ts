@@ -81,16 +81,16 @@ export class AddIncidentComponent implements OnInit {
     //this.addIncidentForm.value.name = { value: this.addIncidentForm.value.name, type: 'name'};
     //this.addIncidentForm.value.type = { value: this.addIncidentForm.value.type, type: 'type'};
 
-    console.warn(this.addIncidentForm.value);
+    console.log(this.addIncidentForm.value);
 
     this.createIncident(this.addIncidentForm.value);
   }
 
   onClickTest() {
     //this.initializeData();
-    console.warn(this.addIncidentForm.value);
+    console.log(this.addIncidentForm.value);
     this.addIncidentForm.value.name = { value: this.addIncidentForm.value.name, type: 'name'};
-    console.warn(this.addIncidentForm.value);
+    console.log(this.addIncidentForm.value);
   }
 
   isTimeType()
@@ -149,7 +149,7 @@ export class AddIncidentComponent implements OnInit {
         console.log(resp);
       })
       .catch(error => {
-        console.log(error);
+        console.warn(error);
       });
   }
 

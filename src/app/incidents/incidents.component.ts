@@ -77,14 +77,14 @@ export class IncidentsComponent implements OnInit {
   onCellValueChanged(event) {
     // handle the rest here
 
-    console.warn(event.data.id);
+    console.log(event.data.id);
     this.updateIncident(event.data.id, event.data)
   }
 
   onRemoveSelected() {
     var selectedData = this.gridApi.getSelectedRows();
     if(selectedData.length > 0) {
-      console.warn(selectedData);
+      console.log(selectedData);
 
       const dialogRef = this.dialog.open(IncidentDeleteDialog,{
         //width: '250px',
