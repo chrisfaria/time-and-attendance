@@ -17,19 +17,24 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+
 import { AgGridModule } from 'ag-grid-angular';
+
+import { Chart } from 'chart.js';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { FirebaseService } from "./services/firebase.service"
 import { environment } from '../environments/environment';
+import { AnalyticsComponent } from './analytics/analytics.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddIncidentComponent,
     IncidentsComponent,
-    IncidentDeleteDialog
+    IncidentDeleteDialog,
+    AnalyticsComponent
   ],
   entryComponents: [
     IncidentDeleteDialog
