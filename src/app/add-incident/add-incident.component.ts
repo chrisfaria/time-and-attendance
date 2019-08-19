@@ -25,31 +25,10 @@ export class AddIncidentComponent implements OnInit {
   testnote = true;
   valueLabel1 = '';
   valueLabel2 = '';
+  
   incidents: any;
-
-  names: Name[] = [
-    {value: '001-Homer', viewValue: 'Homer'},
-    {value: '001-Sidd', viewValue: 'Sidd'},
-    {value: '001-Gaurav', viewValue: 'Gaurav'},
-    {value: '001-Rosie', viewValue: 'Rosie'},
-    {value: '001-Jim', viewValue: 'Jim'}
-  ];
-
-  types: IncidentType[] = [
-    {value: '001-LateArrival', viewValue: 'Late arrival'},
-    {value: '002-LeaveEarly', viewValue: 'Leave early'},
-    {value: '003-Vacation', viewValue: 'Vacation'},
-    {value: '004-SickDay', viewValue: 'Sick day'},
-    {value: '005-AlteredSchedule', viewValue: 'Altered schedule'},
-    {value: '006-LongLunch', viewValue: 'Long lunch'},
-    {value: '007-WorkFromHome', viewValue: 'Work from home'},
-    {value: '008-LieuDay', viewValue: 'Lieu day'},
-    {value: '009-Overtime', viewValue: 'Overtime'},
-    {value: '011-PersonalDay', viewValue: 'Personal day'},
-    {value: '010-LeaveOfAbsence', viewValue: 'Leave of absence'},
-    {value: '012-Note', viewValue: 'Note'},
-    {value: '013-Event', viewValue: 'Event'}
-  ];
+  teams: any;
+  incidentTypes: any;
 
   addIncidentForm = this.fb.group({
     name: ['', Validators.required],
@@ -69,7 +48,22 @@ export class AddIncidentComponent implements OnInit {
   constructor(private fb: FormBuilder, private firebaseService: FirebaseService) { }
 
   ngOnInit() {
-
+    this.firebaseService.getTeams().subscribe(data => {
+      this.teams = data.map(r => {
+        return {
+          id: r.payload.doc.id,
+          name: r.payload.doc.data()['name'],
+        };
+      })
+    });
+    this.firebaseService.getIncidentTypes().subscribe(data => {
+      this.incidentTypes = data.map(r => {
+        return {
+          id: r.payload.doc.id,
+          name: r.payload.doc.data()['name'],
+        };
+      })
+    });
   }
 
   onClickAddIncident() {

@@ -9,23 +9,23 @@
           <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
 
-      <div *ngIf='names'>
+      <div *ngIf='teams'>
       <mat-form-field class="tna-full-width">  
           <mat-label>Name</mat-label>
           <mat-select formControlName="name">  
-              <mat-option *ngFor="let name of names" [value]="name.value">
-                  {{name.viewValue}}
+              <mat-option *ngFor="let team of teams" [value]="team.name">
+                  {{team.name}}
               </mat-option>
           </mat-select>  
       </mat-form-field> 
       </div>
 
-      <div *ngIf='types'>
+      <div *ngIf='incidentTypes'>
       <mat-form-field class="tna-full-width">  
           <mat-label>Type</mat-label>
           <mat-select formControlName="type">  
-              <mat-option *ngFor="let type of types" [value]="type.value">
-                  {{type.viewValue}}
+              <mat-option *ngFor="let type of incidentTypes" [value]="type.name">
+                  {{type.name}}
               </mat-option>
           </mat-select>  
       </mat-form-field> 

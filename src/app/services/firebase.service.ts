@@ -31,4 +31,16 @@ export class FirebaseService {
       .doc('incidents/' + record_id)
       .delete();
   }
+
+  getTeams() {
+    return this.afs
+      .collection('team')
+      .snapshotChanges();
+  }
+
+  getIncidentTypes() {
+    return this.afs
+      .collection('incident-types')
+      .snapshotChanges();
+  }
 }
