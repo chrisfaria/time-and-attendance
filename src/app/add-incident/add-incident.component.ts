@@ -89,8 +89,8 @@ export class AddIncidentComponent implements OnInit {
 
   isTimeType()
   {
-    if (this.addIncidentForm.value.type == '001-LateArrival' || 
-        this.addIncidentForm.value.type == '002-LeaveEarly')
+    if (this.addIncidentForm.value.type == 'Late arrival' || 
+        this.addIncidentForm.value.type == 'Leave early')
     {
       this.valueLabel1 = 'Time'
       return true;
@@ -100,10 +100,10 @@ export class AddIncidentComponent implements OnInit {
 
   isStartEndTimeType()
   {
-    if (this.addIncidentForm.value.type == '005-AlteredSchedule')
+    if (this.addIncidentForm.value.type == 'Altered schedule')
     {
       this.valueLabel1 = 'Start Time'
-      this.valueLabel1 = 'End Time'
+      this.valueLabel2 = 'End Time'
       return true;
     }
     return false;
@@ -111,7 +111,7 @@ export class AddIncidentComponent implements OnInit {
 
   isHoursType()
   {
-    if (this.addIncidentForm.value.type == '006-LongLunch')
+    if (this.addIncidentForm.value.type == 'Long lunch')
     {
       this.valueLabel1 = 'Hours'
       return true;
@@ -121,13 +121,13 @@ export class AddIncidentComponent implements OnInit {
 
   isDaysType()
   {
-    if (this.addIncidentForm.value.type == '003-Vacation' ||
-        this.addIncidentForm.value.type == '004-SickDay' ||
-        this.addIncidentForm.value.type == '007-WorkFromHome' ||
-        this.addIncidentForm.value.type == '008-LieuDay' ||
-        this.addIncidentForm.value.type == '009-Overtime' ||
-        this.addIncidentForm.value.type == '011-PersonalDay' ||
-        this.addIncidentForm.value.type == '010-LeaveOfAbsence')
+    if (this.addIncidentForm.value.type == 'Vacation' ||
+        this.addIncidentForm.value.type == 'Sick day' ||
+        this.addIncidentForm.value.type == 'Work from home' ||
+        this.addIncidentForm.value.type == 'Lieu day' ||
+        this.addIncidentForm.value.type == 'Overtime' ||
+        this.addIncidentForm.value.type == 'Personal day' ||
+        this.addIncidentForm.value.type == 'Leave of absence')
     {
       this.valueLabel1 = 'Days'
       return true;
@@ -152,7 +152,7 @@ export class AddIncidentComponent implements OnInit {
     this.createIncident(<Incident> {
       name: 'Rosie',
       date: '2019-01-19',
-      type: '001-LateArrival',
+      type: 'Late arrival',
       days: 0,
       hours: 0,
       time1: '9:56 am',
@@ -163,7 +163,7 @@ export class AddIncidentComponent implements OnInit {
        this.createIncident(<Incident> {
       name: 'Rosie',
       date: '2019-03-08',
-      type: '001-LateArrival',
+      type: 'Late arrival',
       days: 0,
       hours: 0,
       time1: '9:45 am',
@@ -174,7 +174,7 @@ export class AddIncidentComponent implements OnInit {
        this.createIncident(<Incident> {
       name: 'Rosie',
       date: '2019-03-09',
-      type: '001-LateArrival',
+      type: 'Late arrival',
       days: 0,
       hours: 0,
       time1: '9:35 am',
@@ -185,7 +185,7 @@ export class AddIncidentComponent implements OnInit {
        this.createIncident(<Incident> {
       name: 'Homer',
       date: '2019-07-03',
-      type: '006-LongLunch',
+      type: 'Long lunch',
       days: 0,
       hours: 2,
       time1: '',
@@ -196,7 +196,7 @@ export class AddIncidentComponent implements OnInit {
        this.createIncident(<Incident> {
       name: 'Jim',
       date: '2019-07-05',
-      type: '004-SickDay',
+      type: 'Sick day',
       days: 5,
       hours: 0,
       time1: '',
@@ -207,7 +207,7 @@ export class AddIncidentComponent implements OnInit {
        this.createIncident(<Incident> {
       name: 'Homer',
       date: '2019-07-05',
-      type: '005-AlteredSchedule',
+      type: 'Altered schedule',
       days: 0,
       hours: 0,
       time1: '7:00 am',
@@ -218,7 +218,7 @@ export class AddIncidentComponent implements OnInit {
        this.createIncident(<Incident> {
       name: 'Rosie',
       date: '2019-07-18',
-      type: '007-WorkFromHome',
+      type: 'Work from home',
       days: 1,
       hours: 0,
       time1: '',
@@ -229,7 +229,7 @@ export class AddIncidentComponent implements OnInit {
        this.createIncident(<Incident> {
       name: 'Homer',
       date: '2019-07-08',
-      type: '005-AlteredSchedule',
+      type: 'Altered schedule',
       days: 0,
       hours: 0,
       time1: '7:00 am',
@@ -240,7 +240,7 @@ export class AddIncidentComponent implements OnInit {
        this.createIncident(<Incident> {
       name: 'Jim',
       date: '2019-07-20',
-      type: '001-LateArrival',
+      type: 'Late arrival',
       days: 0,
       hours: 0,
       time1: '9:15 am',
@@ -251,7 +251,7 @@ export class AddIncidentComponent implements OnInit {
        this.createIncident(<Incident> {
       name: 'Homer',
       date: '2019-07-21',
-      type: '001-LateArrival',
+      type: 'Late arrival',
       days: 0,
       hours: 0,
       time1: '10:49 am',
@@ -262,7 +262,7 @@ export class AddIncidentComponent implements OnInit {
        this.createIncident(<Incident> {
       name: 'Rosie',
       date: '2019-08-01',
-      type: '007-WorkFromHome',
+      type: 'Work from home',
       days: 1,
       hours: 0,
       time1: '',
@@ -273,7 +273,7 @@ export class AddIncidentComponent implements OnInit {
        this.createIncident(<Incident> {
       name: 'Jim',
       date: '2019-08-05',
-      type: '004-SickDay',
+      type: 'Sick day',
       days: 1,
       hours: 0,
       time1: '',
@@ -284,7 +284,7 @@ export class AddIncidentComponent implements OnInit {
        this.createIncident(<Incident> {
       name: 'Jim',
       date: '2019-08-06',
-      type: '004-SickDay',
+      type: 'Sick day',
       days: 1,
       hours: 0,
       time1: '',
@@ -295,7 +295,7 @@ export class AddIncidentComponent implements OnInit {
        this.createIncident(<Incident> {
       name: 'Jim',
       date: '2019-08-07',
-      type: '004-SickDay',
+      type: 'Sick day',
       days: 1,
       hours: 0,
       time1: '',
@@ -306,7 +306,7 @@ export class AddIncidentComponent implements OnInit {
        this.createIncident(<Incident> {
       name: 'Rosie',
       date: '2019-08-10',
-      type: '001-LateArrival',
+      type: 'Late arrival',
       days: 0,
       hours: 0,
       time1: '10:13 am',
@@ -317,7 +317,7 @@ export class AddIncidentComponent implements OnInit {
        this.createIncident(<Incident> {
       name: 'Homer',
       date: '2019-08-03',
-      type: '013-Event',
+      type: 'Event',
       days: 0,
       hours: 0,
       time1: '',
@@ -328,7 +328,7 @@ export class AddIncidentComponent implements OnInit {
        this.createIncident(<Incident> {
       name: 'Jim',
       date: '2019-08-015',
-      type: '003-Vacation',
+      type: 'Vacation',
       days: 1,
       hours: 0,
       time1: '',
@@ -339,7 +339,7 @@ export class AddIncidentComponent implements OnInit {
        this.createIncident(<Incident> {
       name: 'Jim',
       date: '2019-06-01',
-      type: '003-Vacation',
+      type: 'Vacation',
       days: 9,
       hours: 0,
       time1: '',
@@ -350,7 +350,7 @@ export class AddIncidentComponent implements OnInit {
        this.createIncident(<Incident> {
       name: 'Rosie',
       date: '2019-08-18',
-      type: '001-LateArrival',
+      type: 'Late arrival',
       days: 0,
       hours: 0,
       time1: '9:44 am',
