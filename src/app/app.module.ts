@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { AnalyticsModule } from './analytics/analytics.module';
 import { AddIncidentComponent } from './add-incident/add-incident.component';
 import { IncidentsComponent, IncidentDeleteDialog } from './incidents/incidents.component';
 
@@ -20,21 +21,17 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 
 import { AgGridModule } from 'ag-grid-angular';
 
-import { Chart } from 'chart.js';
-
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { FirebaseService } from "./services/firebase.service"
 import { environment } from '../environments/environment';
-import { AnalyticsComponent } from './analytics/analytics.component';
-
+  
 @NgModule({
   declarations: [
     AppComponent,
     AddIncidentComponent,
     IncidentsComponent,
     IncidentDeleteDialog,
-    AnalyticsComponent
   ],
   entryComponents: [
     IncidentDeleteDialog
@@ -55,7 +52,8 @@ import { AnalyticsComponent } from './analytics/analytics.component';
     MatCardModule,
     MatDialogModule,
     NgxMaterialTimepickerModule,
-    AgGridModule.withComponents([])
+    AgGridModule.withComponents([]),
+    AnalyticsModule
   ],
   providers: [FirebaseService],
   bootstrap: [AppComponent]

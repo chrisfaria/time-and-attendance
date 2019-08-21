@@ -30,7 +30,7 @@
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
-            "scripts": [],
+            "scripts": ["./node_modules/chart.js/dist/Chart.js"],
             "es5BrowserSupport": true
           },
           "configurations": {
@@ -88,7 +88,7 @@
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
-            "scripts": [],
+            "scripts": ["./node_modules/chart.js/dist/Chart.js"],
             "assets": [
               "src/favicon.ico",
               "src/assets"
