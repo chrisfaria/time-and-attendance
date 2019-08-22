@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { IncidentsComponent } from './incidents/incidents.component';
-import { TestchartComponent } from './analytics/testchart/testchart.component'
+import { ReportingComponent } from './reporting/reporting.component';
 
 const routes: Routes = [
-  { path: 'analytics', component: TestchartComponent },
+  { path: 'reporting', component: ReportingComponent },
   { path: 'incidents', component: IncidentsComponent},
   { path: '', redirectTo: 'incidents', pathMatch: 'full'},
   { path: '**', redirectTo: 'incidents', pathMatch: 'full'},

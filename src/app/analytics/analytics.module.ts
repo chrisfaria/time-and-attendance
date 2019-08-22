@@ -8,6 +8,7 @@ import { TestchartComponent } from './testchart/testchart.component';
   imports: [
     CommonModule,
     ChartModule
-  ]
+  ],
+  exports: [TestchartComponent]
 })
 export class AnalyticsModule { }

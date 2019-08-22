@@ -25,13 +25,15 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { FirebaseService } from "./services/firebase.service"
 import { environment } from '../environments/environment';
-  
+import { ReportingComponent } from './reporting/reporting.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     AddIncidentComponent,
     IncidentsComponent,
     IncidentDeleteDialog,
+    ReportingComponent,
   ],
   entryComponents: [
     IncidentDeleteDialog
